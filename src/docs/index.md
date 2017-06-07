@@ -39,17 +39,17 @@
 
 	<div>
 		<label for="number">Number</label>
-		<input type="number" name="number" id="number" value="" pattern="[-+]?[0-9]*[.,]?[0-9]+" required>
+		<input type="number" name="number" id="number" value="" pattern="[-+]?[0-9]" required>
 	</div>
 
 	<div>
-		<label for="float">Number (integers only)</label>
-		<input type="number" step="1" name="integer" id="integer" value="" step="1" pattern="[-+]?[0-9]" required>
+		<label for="float">Number (allow decimals)</label>
+		<input type="number" step="any" name="integer" id="integer" value="" step="1" pattern="[-+]?[0-9]*[.,]?[0-9]+" required>
 	</div>
 
 	<div>
 		<label for="numberminmax">Number with Min and Max <span class="pattern">Must be between 2 and 7</span></label>
-		<input type="number" min="2" max="7" name="numberminmax" id="numberminmax" value="" pattern="[2-7]*[.,]?[0-9]+" required>
+		<input type="number" min="2" max="7" name="numberminmax" id="numberminmax" value="" pattern="[2-7]" required>
 	</div>
 
 	<div>
@@ -91,7 +91,7 @@
 	</div>
 
 	<div>
-		<strong>Checkboxes <span class="pattern">"REQUIRED" VALIDATION NOT SUPPORTED ON GROUP</span></strong>
+		<strong>Checkboxes</strong>
 		<label class="label-normal">
 			<input type="checkbox" name="checkbox-1" id="checkbox-1" required>
 			Wolverine (must be checked)
