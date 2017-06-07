@@ -265,7 +265,7 @@ If you also include [Eli Grey's classList.js polyfill](https://github.com/eligre
 
 ## How to Contribute
 
-Please review the  [contributing guidelines](CONTRIBUTING.md).
+Please review the [contributing guidelines](CONTRIBUTING.md).
 
 
 
