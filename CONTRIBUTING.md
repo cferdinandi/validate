@@ -15,6 +15,14 @@ Duplicates and issues without a reduced test case may be closed without comment.
 
 
 
+## Feature Requests
+
+Please create a separate issue for each request and clearly mark it as a feature request. Provide as much detail as you can.
+
+If there's a feature listed there already that you'd like to see incorporated into the plugin, add your support.
+
+
+
 ## Submitting a Pull Request
 
 Please make sure your code meets the following code standards:
