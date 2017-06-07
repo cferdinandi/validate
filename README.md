@@ -1,5 +1,4 @@
 # Validate.js [![Build Status](https://travis-ci.org/cferdinandi/validate.svg)](https://travis-ci.org/cferdinandi/validate)
-
 A lightweight form validation script that augments native HTML5 form validation elements and attributes, providing a better user experience and giving you more control.
 
 When a visitor leaves a field, Validate.js immediately validates the field and displays an error if applicable. It also validates the entire form on submit, and provides support for custom `onSubmit()` functions (for example, Ajax form submission).
