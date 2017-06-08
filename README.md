@@ -129,7 +129,7 @@ Validate.js includes smart defaults and works right out of the box. But if you w
 
 ### Global Settings
 
-You can pass options and callbacks into Smooth Scroll through the `init()` function:
+You can pass options and callbacks into Validate through the `init()` function:
 
 ```javascript
 validate.init({
