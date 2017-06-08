@@ -172,17 +172,6 @@
 		// If too long
 		if (validity.tooLong) return localSettings.messageTooLong.replace('{minLength}', field.getAttribute('maxLength')).replace('{length}', field.value.length);
 
-		// If pattern doesn't match
-		if (validity.patternMismatch) {
-
-			// If pattern info is included, return custom error
-			if (field.hasAttribute('title')) return field.getAttribute('title');
-
-			// Otherwise, generic error
-			return localSettings.messagePatternMismatch;
-
-		}
-
 		// If number input isn't a number
 		if (validity.badInput) return localSettings.messageBadInput;
 
@@ -194,6 +183,17 @@
 
 		// If a number field is below the min
 		if (validity.rangeUnderflow) return localSettings.messageRangeUnderflow.replace('{min}', field.getAttribute('min'));
+
+		// If pattern doesn't match
+		if (validity.patternMismatch) {
+
+			// If pattern info is included, return custom error
+			if (field.hasAttribute('title')) return field.getAttribute('title');
+
+			// Otherwise, generic error
+			return localSettings.messagePatternMismatch;
+
+		}
 
 		// If all else fails, return a generic catchall error
 		return localSettings.messageGeneric;
