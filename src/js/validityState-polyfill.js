@@ -21,6 +21,19 @@
 		var length = field.value.length;
 		var valid = true;
 
+		// If radio group, get selected field
+		if (field.type === 'radio' && field.name) {
+			var group = document.getElementsByName(field.name);
+			if (group.length > 0) {
+				for (var i = 0; i < group.length; i++) {
+					if (group[i].form === field.form && field.checked) {
+						field = group[i];
+						break;
+					}
+				}
+			}
+		}
+
 		// Run validity checks
 		var checkValidity = {
 			badInput: (isNum && length > 0 && !/[-+]?[0-9]/.test(field.value)), // value of a number field is not a number
@@ -54,13 +67,13 @@
 	};
 
 	// If the full set of ValidityState features aren't supported, polyfill
-	if (!supported()) {
+	// if (!supported()) {
 		Object.defineProperty(HTMLInputElement.prototype, 'validity', {
 			get: function ValidityState() {
 				return getValidityState(this);
 			},
 			configurable: true,
 		});
-	}
+	// }
 
 })(window, document);
