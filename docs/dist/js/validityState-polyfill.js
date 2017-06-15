@@ -1,5 +1,5 @@
 /*!
- * validate v1.0.3: A lightweight form validation script that augments native HTML5 form validation elements and attributes.
+ * validate v1.0.4: A lightweight form validation script that augments native HTML5 form validation elements and attributes.
  * (c) 2017 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/validate
@@ -27,6 +27,19 @@
 		var isNum = type === 'number' || type === 'range';
 		var length = field.value.length;
 		var valid = true;
+
+		// If radio group, get selected field
+		if (field.type === 'radio' && field.name) {
+			var group = document.getElementsByName(field.name);
+			if (group.length > 0) {
+				for (var i = 0; i < group.length; i++) {
+					if (group[i].form === field.form && field.checked) {
+						field = group[i];
+						break;
+					}
+				}
+			}
+		}
 
 		// Run validity checks
 		var checkValidity = {
@@ -61,13 +74,13 @@
 	};
 
 	// If the full set of ValidityState features aren't supported, polyfill
-	if (!supported()) {
+	// if (!supported()) {
 		Object.defineProperty(HTMLInputElement.prototype, 'validity', {
 			get: function ValidityState() {
 				return getValidityState(this);
 			},
 			configurable: true,
 		});
-	}
+	// }
 
 })(window, document);

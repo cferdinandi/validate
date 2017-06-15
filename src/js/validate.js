@@ -220,9 +220,10 @@
 
 		// If the field is a radio button and part of a group, error all and get the last item in the group
 		if (field.type === 'radio' && field.name) {
-			var group = field.form.querySelectorAll('[name="' + field.name + '"]');
+			var group = document.getElementsByName(field.name);
 			if (group.length > 0) {
 				for (var i = 0; i < group.length; i++) {
+					if (group[i].form !== field.form) continue; // Only check fields in current form
 					group[i].classList.add(localSettings.fieldClass);
 				}
 				field = group[group.length - 1];
@@ -293,9 +294,10 @@
 
 		// If the field is a radio button and part of a group, remove error from all and get the last item in the group
 		if (field.type === 'radio' && field.name) {
-			var group = field.form.querySelectorAll('[name="' + field.name + '"]');
+			var group = document.getElementsByName(field.name);
 			if (group.length > 0) {
 				for (var i = 0; i < group.length; i++) {
+					if (group[i].form !== field.form) continue; // Only check fields in current form
 					group[i].classList.remove(localSettings.fieldClass);
 				}
 				field = group[group.length - 1];
