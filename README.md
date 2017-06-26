@@ -154,13 +154,13 @@ validate.init({
 
 	// Form Submission
 	disableSubmit: false, // If true, don't submit the form to the server (for Ajax for submission)
-	onSubmit: function () {}, // Function to run if the form successfully validates
+	onSubmit: function (form, fields) {}, // Function to run if the form successfully validates
 
 	// Callbacks
-	beforeShowError: function () {}, // Function to run before an error is display
-	afterShowError: function () {}, // Function to run after an error is display
-	beforeRemoveError: function () {}, // Function to run before an error is removed
-	afterRemoveError: function () {}, // Function to run after an error is removed
+	beforeShowError: function (field, error) {}, // Function to run before an error is display
+	afterShowError: function (field, error) {}, // Function to run after an error is display
+	beforeRemoveError: function (field) {}, // Function to run before an error is removed
+	afterRemoveError: function (field) {}, // Function to run after an error is removed
 
 });
 ```
