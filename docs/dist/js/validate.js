@@ -1,5 +1,5 @@
 /*!
- * validate v1.0.4: A lightweight form validation script that augments native HTML5 form validation elements and attributes.
+ * validate v1.0.5: A lightweight form validation script that augments native HTML5 form validation elements and attributes.
  * (c) 2017 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/validate
@@ -399,7 +399,6 @@
 		if (hasErrors || settings.disableSubmit) {
 			event.preventDefault();
 		}
-		event.preventDefault();
 
 		// If there are errrors, focus on first element with error
 		if (hasErrors) {

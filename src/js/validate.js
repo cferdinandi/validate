@@ -392,7 +392,6 @@
 		if (hasErrors || settings.disableSubmit) {
 			event.preventDefault();
 		}
-		event.preventDefault();
 
 		// If there are errrors, focus on first element with error
 		if (hasErrors) {
