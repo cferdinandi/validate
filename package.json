@@ -2,7 +2,7 @@
 	"name": "validate",
 	"version": "1.0.5",
 	"description": "A lightweight form validation script that augments native HTML5 form validation elements and attributes.",
-	"main": "./dist/js/validate.min.js",
+	"main": "./dist/js/validate.js",
 	"author": {
 		"name": "Chris Ferdinandi",
 		"url": "http://gomakethings.com"
