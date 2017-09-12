@@ -423,7 +423,7 @@
 		if ( !settings ) return;
 
 		// Remove event listeners
-		document.removeEventListener('blur', blurHandler, false);
+		document.removeEventListener('blur', blurHandler, true);
 		document.removeEventListener('submit', submitHandler, false);
 
 		// Remove all errors
