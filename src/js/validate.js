@@ -263,9 +263,9 @@
 		// Update error message
 		message.innerHTML = error;
 
-		// Show error message
-		message.style.display = 'block';
-		message.style.visibility = 'visible';
+		// Remove any existing styles hiding the error message
+		message.style.display = '';
+		message.style.visibility = '';
 
 		// After show error callback
 		localSettings.afterShowError(field, error);
