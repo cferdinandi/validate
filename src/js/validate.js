@@ -195,6 +195,9 @@
 
 		}
 
+		// If custom error
+		if (validity.customError) return field.validationMessage;
+
 		// If all else fails, return a generic catchall error
 		return localSettings.messageGeneric;
 
