@@ -372,6 +372,34 @@
 	};
 
 	/**
+	 * Check radio and checkbox field validity when clicked
+	 * @private
+	 * @param  {Event} event The click event
+	 */
+	var clickHandler = function (event) {
+
+		// Only run if the field is in a form to be validated
+		if (!event.target.form || !event.target.form.matches(settings.selector)) return;
+
+		// Only run if the field is a checkbox or radio
+		var type = event.target.getAttribute('type');
+		if (!(type === 'checkbox' || type === 'radio')) return;
+
+		// Validate the field
+		var error = validate.hasError(event.target);
+
+		// If there's an error, show it
+		if (error) {
+			validate.showError(event.target, error);
+			return;
+		}
+
+		// Otherwise, remove any errors that exist
+		validate.removeError(event.target);
+
+	};
+
+	/**
 	 * Check all fields on submit
 	 * @private
 	 * @param  {Event} event  The submit event
@@ -423,7 +451,8 @@
 		if ( !settings ) return;
 
 		// Remove event listeners
-		document.removeEventListener('blur', blurHandler, true);
+		document.removeEventListener('blur', blurHandler, false);
+		document.removeEventListener('click', clickHandler, true);
 		document.removeEventListener('submit', submitHandler, false);
 
 		// Remove all errors
@@ -461,6 +490,7 @@
 
 		// Event listeners
 		document.addEventListener('blur', blurHandler, true);
+		document.addEventListener('click', clickHandler, true);
 		document.addEventListener('submit', submitHandler, false);
 
 	};
