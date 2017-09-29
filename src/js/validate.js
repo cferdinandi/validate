@@ -28,6 +28,8 @@
 
 		// Messages
 		messageValueMissing: 'Please fill out this field.',
+		messageValueMissingSelect: 'Please select a value.',
+		messageValueMissingSelectMulti: 'Please select at least one value.',
 		messageTypeMismatchEmail: 'Please enter an email address.',
 		messageTypeMismatchURL: 'Please enter a URL.',
 		messageTooShort: 'Please lengthen this text to {minLength} characters or more. You are currently using {length} characters.',
@@ -153,7 +155,14 @@
 		if (validity.valid) return;
 
 		// If field is required and empty
-		if (validity.valueMissing) return localSettings.messageValueMissing;
+		if (validity.valueMissing) {
+			
+			if (field.type === 'select-multiple') return localSettings.messageValueMissingSelectMulti;
+
+			if (field.type === 'select-one') return localSettings.messageValueMissingSelect;
+
+			return localSettings.messageValueMissing;
+		}
 
 		// If not the right type
 		if (validity.typeMismatch) {
