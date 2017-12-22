@@ -5,7 +5,8 @@
 	// Make sure that ValidityState is supported in full (all features)
 	var supported = function () {
 		var input = document.createElement('input');
-		return ('validity' in input && 'badInput' in input.validity && 'patternMismatch' in input.validity && 'rangeOverflow' in input.validity && 'rangeUnderflow' in input.validity && 'stepMismatch' in input.validity && 'tooLong' in input.validity && 'tooShort' in input.validity && 'typeMismatch' in input.validity && 'valid' in input.validity && 'valueMissing' in input.validity);
+		var form = document.createElement('form');
+		return ('reportValidity' in form && 'validity' in input && 'badInput' in input.validity && 'patternMismatch' in input.validity && 'rangeOverflow' in input.validity && 'rangeUnderflow' in input.validity && 'stepMismatch' in input.validity && 'tooLong' in input.validity && 'tooShort' in input.validity && 'typeMismatch' in input.validity && 'valid' in input.validity && 'valueMissing' in input.validity);
 	};
 
 	// Save browser's own implementation if available
@@ -99,7 +100,7 @@
 	};
 
 	// If the full set of ValidityState features aren't supported, polyfill
-	// if (!supported()) {
+	if (!supported()) {
 		Object.defineProperty(HTMLInputElement.prototype, 'validity', {
 			get: function ValidityState() {
 				return getValidityState(this);
@@ -124,6 +125,20 @@
 			},
 			configurable: true,
 		});
-	// }
+		Object.defineProperty(HTMLFormElement.prototype, 'reportValidity', {
+			get: function reportValidity() {
+				return function() {
+					var textAreas = [].slice.call(this.querySelectorAll('textarea'));
+					var inputs = [].slice.call(this.querySelectorAll('input'));
+					var allInputs = [].concat(textAreas, inputs);
+					var validity = allInputs.reduce(function(accumulator, currentItem) {
+						return accumulator + (getValidityState(currentItem).valid ? 0 : 1);
+					}, 0);
+					return validity === 0;
+				};
+			},
+			configurable: true,
+		});
+	}
 
 })(window, document);
