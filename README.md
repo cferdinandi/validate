@@ -1,7 +1,7 @@
 # Validate.js [![Build Status](https://travis-ci.org/cferdinandi/validate.svg)](https://travis-ci.org/cferdinandi/validate)
 A lightweight form validation script that augments native HTML5 form validation elements and attributes, providing a better user experience and giving you more control.
 
-When a visitor leaves a field, Validate.js immediately validates the field and displays an error if applicable. It also validates the entire form on submit, and provides support for custom `onSubmit()` functions (for example, Ajax form submission).
+When a visitor leaves a field, Validate.js immediately validates the field and displays an error if applicable. It also validates the entire form on submit, and provides support for custom `onSubmit()` functions (for example, Ajax form submission). You can pass an option to activate live validation on fields while the visitor is still typing.
 
 [Download Validate](https://github.com/cferdinandi/validate/archive/master.zip) / [View the demo](http://cferdinandi.github.io/validate/)
 
@@ -151,6 +151,9 @@ validate.init({
 	messageRangeOverflow: 'Please select a value that is no more than {max}.', // Displayed with the `max` attribute is used and the input value is too hight
 	messageRangeUnderflow: 'Please select a value that is no less than {min}.', // Displayed with the `mind` attribute is used and the input value is too low
 	messageGeneric: 'The value you entered for this field is invalid.', // A catchall error, displayed when the field fails validation and none of the other conditions apply
+
+	// Live Validation
+	useLiveValidation: false, // Update errors instantly while the visitor is typing
 
 	// Form Submission
 	disableSubmit: false, // If true, don't submit the form to the server (for Ajax for submission)
