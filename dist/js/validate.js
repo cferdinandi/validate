@@ -1,6 +1,6 @@
 /*!
- * validate v1.1.0: A lightweight form validation script that augments native HTML5 form validation elements and attributes.
- * (c) 2017 Chris Ferdinandi
+ * validate v1.2.0: A lightweight form validation script that augments native HTML5 form validation elements and attributes.
+ * (c) 2018 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/validate
  */
@@ -47,6 +47,9 @@
 		messageRangeOverflow: 'Please select a value that is no more than {max}.',
 		messageRangeUnderflow: 'Please select a value that is no less than {min}.',
 		messageGeneric: 'The value you entered for this field is invalid.',
+
+		// Live Validation
+		useLiveValidation: false,
 
 		// Form Submission
 		disableSubmit: false,
@@ -407,6 +410,63 @@
 	};
 
 	/**
+	 * Check text field validity when typing
+	 * @private
+	 * @param  {Event} event The keyup event
+	 */
+	var keyupHandler = function (event) {
+
+		// Only run if the field is in a form to be validated
+		if (!event.target.form || !event.target.form.matches(settings.selector)) return;
+
+		// Only run if the field is some kind of text field
+		var type = event.target.getAttribute('type');
+		var textLikeInputs = ['text', 'email', 'url', 'tel', 'number', 'password', 'search', 'date', 'time', 'datetime', 'month', 'week'];
+		if (!(textLikeInputs.indexOf(type) > -1 || event.target.nodeName === 'TEXTAREA')) return;
+
+		// Validate the field
+		var error = validate.hasError(event.target);
+
+		// If there's an error, show it
+		if (error) {
+			validate.showError(event.target, error);
+			return;
+		}
+
+		// Otherwise, remove any errors that exist
+		validate.removeError(event.target);
+
+	};
+
+	/**
+	 * Check select field validity on change
+	 * @private
+	 * @param  {Event} event The change event
+	 */
+	var changeHandler = function (event) {
+
+		// Only run if the field is in a form to be validated
+		if (!event.target.form || !event.target.form.matches(settings.selector)) return;
+
+		// Only run if the field is a select
+		var type = event.target.getAttribute('type');
+		if (!(event.target.nodeName === 'SELECT')) return;
+
+		// Validate the field
+		var error = validate.hasError(event.target);
+
+		// If there's an error, show it
+		if (error) {
+			validate.showError(event.target, error);
+			return;
+		}
+
+		// Otherwise, remove any errors that exist
+		validate.removeError(event.target);
+
+	};
+
+	/**
 	 * Check all fields on submit
 	 * @private
 	 * @param  {Event} event  The submit event
@@ -462,6 +522,11 @@
 		document.removeEventListener('click', clickHandler, true);
 		document.removeEventListener('submit', submitHandler, false);
 
+		if (settings.useLiveValidation) {
+			document.removeEventListener('change', changeHandler, true);
+			document.removeEventListener('keyup', keyupHandler, true);
+		}
+
 		// Remove all errors
 		var fields = document.querySelectorAll(settings.errorClass);
 		for (var i = 0; i < fields.length; i++) {
@@ -499,6 +564,11 @@
 		document.addEventListener('blur', blurHandler, true);
 		document.addEventListener('click', clickHandler, true);
 		document.addEventListener('submit', submitHandler, false);
+
+		if (settings.useLiveValidation) {
+			document.addEventListener('change', changeHandler, true);
+			document.addEventListener('keyup', keyupHandler, true);
+		}
 
 	};
 
