@@ -49,7 +49,7 @@
 		beforeShowError: function () {},
 		afterShowError: function () {},
 		beforeRemoveError: function () {},
-		afterRemoveError: function () {},
+		afterRemoveError: function () {}
 
 	};
 
@@ -156,7 +156,7 @@
 
 		// If field is required and empty
 		if (validity.valueMissing) {
-			
+
 			if (field.type === 'select-multiple') return localSettings.messageValueMissingSelectMulti;
 
 			if (field.type === 'select-one') return localSettings.messageValueMissingSelect;
@@ -451,8 +451,8 @@
 		if ( !settings ) return;
 
 		// Remove event listeners
-		document.removeEventListener('blur', blurHandler, false);
-		document.removeEventListener('click', clickHandler, true);
+		document.removeEventListener('blur', blurHandler, true);
+		document.removeEventListener('click', clickHandler, false);
 		document.removeEventListener('submit', submitHandler, false);
 
 		// Remove all errors
