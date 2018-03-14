@@ -1,5 +1,5 @@
 /*!
- * validate v1.1.0: A lightweight form validation script that augments native HTML5 form validation elements and attributes.
+ * validate v1.1.2: A lightweight form validation script that augments native HTML5 form validation elements and attributes.
  * (c) 2018 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/validate
@@ -106,7 +106,7 @@
 	};
 
 	// If the full set of ValidityState features aren't supported, polyfill
-	// if (!supported()) {
+	if (!supported()) {
 		Object.defineProperty(HTMLInputElement.prototype, 'validity', {
 			get: function ValidityState() {
 				return getValidityState(this);
@@ -131,6 +131,6 @@
 			},
 			configurable: true,
 		});
-	// }
+	}
 
 })(window, document);

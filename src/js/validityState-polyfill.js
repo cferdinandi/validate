@@ -99,7 +99,7 @@
 	};
 
 	// If the full set of ValidityState features aren't supported, polyfill
-	// if (!supported()) {
+	if (!supported()) {
 		Object.defineProperty(HTMLInputElement.prototype, 'validity', {
 			get: function ValidityState() {
 				return getValidityState(this);
@@ -124,6 +124,6 @@
 			},
 			configurable: true,
 		});
-	// }
+	}
 
 })(window, document);
