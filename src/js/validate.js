@@ -239,8 +239,8 @@
 			}
 		}
 
-		// Get field id or name
-		var id = field.id || field.name;
+    // Get field's id, or use name with square brackets removed
+    var id = field.id || field.name.replace(/[\[\]]/g, '-');
 		if (!id) return;
 
 		// Check if error message field already exists
@@ -313,8 +313,8 @@
 			}
 		}
 
-		// Get field id or name
-		var id = field.id || field.name;
+    // Get field's id, or use name with square brackets removed
+    var id = field.id || field.name.replace(/[\[\]]/g, '-');
 		if (!id) return;
 
 		// Check if an error message is in the DOM
