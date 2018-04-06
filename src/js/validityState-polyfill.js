@@ -93,6 +93,11 @@
 		// Add valid property to validity object
 		checkValidity.valid = valid;
 
+		// Assume a custom error if there is a validation message present but all the other checks returned valid
+		if (checkValidity.valid && field.validationMessage !== '') {
+			checkValidity.customError = true
+		}
+
 		// Return object
 		return checkValidity;
 
