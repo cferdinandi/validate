@@ -95,7 +95,8 @@
 
 		// Assume a custom error if there is a validation message present but all the other checks returned valid
 		if (checkValidity.valid && field.validationMessage !== '') {
-			checkValidity.customError = true
+			checkValidity.customError = true;
+			checkValidity.valid = false;
 		}
 
 		// Return object
