@@ -3,12 +3,12 @@ A lightweight form validation script that augments native HTML5 form validation 
 
 When a visitor leaves a field, Validate.js immediately validates the field and displays an error if applicable. It also validates the entire form on submit, and provides support for custom `onSubmit()` functions (for example, Ajax form submission).
 
-[Download Validate](https://github.com/cferdinandi/validate/archive/master.zip) / [View the demo](http://cferdinandi.github.io/validate/)
+[View the demo](http://cferdinandi.github.io/validate/)
 
 
 <hr>
 
-### Want to learn how to write your own vanilla JS plugins? Get my free [daily developer tips](https://gomakethings.com/newsletter/) and level-up as a web developer. 🚀
+### Want to learn how to write your own vanilla JS plugins? Check out my [Vanilla JS Pocket Guides](https://vanillajsguides.com/) or join the [Vanilla JS Academy](https://vanillajsacademy.com) and level-up as a web developer. 🚀
 
 <hr>
 
@@ -20,8 +20,35 @@ Compiled and production-ready code can be found in the `dist` directory. The `sr
 
 ### 1. Include Validate.js on your site.
 
+There are two versions of Validate: the standalone version, and one that comes preloaded with a polyfill for the Validaty State API, which is only supported in newer browsers and implemented inconsistently.
+
+If you're including your own polyfill or don't want to enable this feature for older browsers, use the standalone version. Otherwise, use the version with the polyfill.
+
+**Direct Download**
+
+You can [download the files directly from GitHub](https://github.com/cferdinandi/validate/archive/master.zip).
+
 ```html
-<script src="dist/js/validate.js"></script>
+<script src="path/to/validate.polyfills.min.js"></script>
+```
+
+**CDN**
+
+You can also use the [jsDelivr CDN](https://cdn.jsdelivr.net/gh/cferdinandi/validate/dist/). I recommend linking to a specific version number or version range to prevent major updates from breaking your site. Validate uses semantic versioning.
+
+```html
+<!-- Always get the latest version -->
+<!-- Not recommended for production sites! -->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/validate/dist/smooth-scroll.polyfills.min.js"></script>
+
+<!-- Get minor updates and patch fixes within a major version -->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/validate@2/dist/smooth-scroll.polyfills.min.js"></script>
+
+<!-- Get patch fixes within a minor version -->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/validate@2.0/dist/smooth-scroll.polyfills.min.js"></script>
+
+<!-- Get a specific version -->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/validate@2.0.0/dist/smooth-scroll.polyfills.min.js"></script>
 ```
 
 ### 2. Use HTML5 semantic input types and validation-related attributes on your form fields.
@@ -71,6 +98,21 @@ In the footer of your page, after the content, initialize Validate.js. And that'
 
 
 
+## ES6 Modules
+
+Validate does not have a default export, but does support CommonJS and can be used with native ES6 module imports.
+
+```js
+import('/path/to/validate.polyfills.min.js')
+	.then(function () {
+		validate.init();
+	});
+```
+
+It uses a UMD pattern, and should also work in most major module bundlers and package managers.
+
+
+
 ## Styling Errors
 
 Validate.js does not come pre-packaged with any styles for fields with errors or error messages. Use the `.error` class to style fields, and the `.error-message` class to style error messages.
@@ -91,15 +133,6 @@ Need a starting point? Here's some really lightweight CSS you can use.
 	margin-bottom: 1em;
 }
 ```
-
-
-
-## Installing with Package Managers
-
-You can install Validate.js with your favorite package manager directly from GitHub (it's not available on NPM).
-
-* **[NPM](https://www.npmjs.org/):** `npm install cferdinandi/validate`
-* **[Bower](http://bower.io/):** `bower install https://github.com/cferdinandi/validate.git`
 
 
 
@@ -254,17 +287,11 @@ Validate.js works in all modern browsers, and (mostly) IE 10 and above.
 
 Unfortunately, not all validation types are supported by all versions of IE and Edge consistently. For example, IE10 and IE11 will check if a form input is too long (using the `maxLength` attribute), but Edge will not. And no version of IE or Edge will check if it's too short (using the `minLength` attribute).
 
-### A Polyfill
+### Polyfills
 
-Validate.js includes an optional polyfill (`validityState-polyfill.js`) that you can include to push support back to IE10, and add missing features to partially supported browsers.
+Use the included polyfill version of Validate (or include your own) to push support back to IE10, and add missing features to partially supported browsers.
 
 If you also include [Eli Grey's classList.js polyfill](https://github.com/eligrey/classList.js/), you can push support even further, back to IE9.
-
-
-
-## How to Contribute
-
-Please review the [contributing guidelines](CONTRIBUTING.md).
 
 
 
