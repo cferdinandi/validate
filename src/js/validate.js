@@ -28,6 +28,8 @@
 
 		// Messages
 		messageValueMissing: 'Please fill out this field.',
+		messageValueMissingCheckbox: 'This field is required.',
+		messageValueMissingRadio: 'Please select a value.',
 		messageValueMissingSelect: 'Please select a value.',
 		messageValueMissingSelectMulti: 'Please select at least one value.',
 		messageTypeMismatchEmail: 'Please enter an email address.',
@@ -156,6 +158,10 @@
 
 		// If field is required and empty
 		if (validity.valueMissing) {
+
+			if (field.type === 'checkbox') return localSettings.messageValueMissingCheckbox;
+
+			if (field.type === 'radio') return localSettings.messageValueMissingRadio;
 
 			if (field.type === 'select-multiple') return localSettings.messageValueMissingSelectMulti;
 

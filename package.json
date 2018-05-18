@@ -1,6 +1,6 @@
 {
 	"name": "validate",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"description": "A lightweight form validation script that augments native HTML5 form validation elements and attributes.",
 	"main": "./dist/js/validate.js",
 	"author": {
