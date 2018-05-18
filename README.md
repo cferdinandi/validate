@@ -174,6 +174,10 @@ validate.init({
 
 	// Messages
 	messageValueMissing: 'Please fill out this field.', // Displayed when a required field is left empty
+	messageValueMissingCheckbox: 'This field is required.', // Displayed when a required checkbox isn't checked
+	messageValueMissingRadio: 'Please select a value.', // Displayed when a required radio button isn't selected
+	messageValueMissingSelect: 'Please select a value.', // Displayed when an option from a required select menu isn't selected
+	messageValueMissingSelectMulti: 'Please select at least one value.', // Displayed when an option from a require multi-select menu isn't selected
 	messageTypeMismatchEmail: 'Please enter an email address.', // Displayed when a `type="email"` field isn't a valid email
 	messageTypeMismatchURL: 'Please enter a URL.', // Displayed when a `type="url"` field isn't a valid URL
 	messageTooShort: 'Please lengthen this text to {minLength} characters or more. You are currently using {length} characters.', // Displayed with the `minLength` attribute is used and the input value is too short

@@ -1,5 +1,5 @@
 /*!
- * validate v2.0.0: A lightweight form validation script that augments native HTML5 form validation elements and attributes.
+ * validate v2.1.0: A lightweight form validation script that augments native HTML5 form validation elements and attributes.
  * (c) 2018 Chris Ferdinandi
  * MIT License
  * http://github.com/cferdinandi/validate
@@ -164,6 +164,8 @@
 
 		// Messages
 		messageValueMissing: 'Please fill out this field.',
+		messageValueMissingCheckbox: 'This field is required.',
+		messageValueMissingRadio: 'Please select a value.',
 		messageValueMissingSelect: 'Please select a value.',
 		messageValueMissingSelectMulti: 'Please select at least one value.',
 		messageTypeMismatchEmail: 'Please enter an email address.',
@@ -292,6 +294,10 @@
 
 		// If field is required and empty
 		if (validity.valueMissing) {
+
+			if (field.type === 'checkbox') return localSettings.messageValueMissingCheckbox;
+
+			if (field.type === 'radio') return localSettings.messageValueMissingRadio;
 
 			if (field.type === 'select-multiple') return localSettings.messageValueMissingSelectMulti;
 
