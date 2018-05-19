@@ -15,7 +15,6 @@
 	//
 
 	var validate = {}; // Object for public APIs
-	var supports = 'querySelector' in document && 'addEventListener' in root; // Feature test
 	var settings;
 
 	// Default settings
@@ -60,21 +59,21 @@
 	// Methods
 	//
 
-	// Element.matches() polyfill
+	/**
+	 * Element.matches() polyfill (simple version)
+	 * https://developer.mozilla.org/en-US/docs/Web/API/Element/matches#Polyfill
+	 */
 	if (!Element.prototype.matches) {
-		Element.prototype.matches =
-			Element.prototype.matchesSelector ||
-			Element.prototype.mozMatchesSelector ||
-			Element.prototype.msMatchesSelector ||
-			Element.prototype.oMatchesSelector ||
-			Element.prototype.webkitMatchesSelector ||
-			function(s) {
-				var matches = (this.document || this.ownerDocument).querySelectorAll(s),
-					i = matches.length;
-				while (--i >= 0 && matches.item(i) !== this) {}
-				return i > -1;
-			};
+		Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
 	}
+
+	/**
+	 * Feature test
+	 * @return {Boolean} Returns true if required methods and APIs are supported by the browser
+	 */
+	var supports = function () {
+		return 'querySelector' in document && 'addEventListener' in root;
+	};
 
 	/**
 	 * Merge two or more objects. Returns a new object.
@@ -483,7 +482,7 @@
 	validate.init = function (options) {
 
 		// feature test
-		if (!supports) return;
+		if (!supports()) return;
 
 		// Destroy any existing initializations
 		validate.destroy();
