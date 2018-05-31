@@ -39,16 +39,19 @@ You can also use the [jsDelivr CDN](https://cdn.jsdelivr.net/gh/cferdinandi/vali
 ```html
 <!-- Always get the latest version -->
 <!-- Not recommended for production sites! -->
-<script src="https://cdn.jsdelivr.net/gh/cferdinandi/validate/dist/smooth-scroll.polyfills.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/validate/dist/validate.min.js"></script>
 
 <!-- Get minor updates and patch fixes within a major version -->
-<script src="https://cdn.jsdelivr.net/gh/cferdinandi/validate@2/dist/smooth-scroll.polyfills.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/validate@2/dist/validate.min.js"></script>
 
 <!-- Get patch fixes within a minor version -->
-<script src="https://cdn.jsdelivr.net/gh/cferdinandi/validate@2.0/dist/smooth-scroll.polyfills.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/validate@2.2/dist/validate.min.js"></script>
 
 <!-- Get a specific version -->
-<script src="https://cdn.jsdelivr.net/gh/cferdinandi/validate@2.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/validate@2.2.0/dist/validate.min.js"></script>
+
+<!-- Get a specific version with legacy browser support -->
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/validate@2.2.0/dist/validate.polyfills.min.js"></script>
 ```
 
 ### 2. Use HTML5 semantic input types and validation-related attributes on your form fields.
