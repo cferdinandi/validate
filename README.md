@@ -5,6 +5,16 @@ When a visitor leaves a field, Validate.js immediately validates the field and d
 
 [View the demo](http://cferdinandi.github.io/validate/)
 
+## Deprecation Notice
+
+This plugin has been deprecated and replaced with [Bouncer](https://github.com/cferdinandi/bouncer), which uses the came conventions but has better under-the-hood engineering.
+
+Validate.js attempted to use the Constraint Validation API to validate fields. The API is buggy at best, and smoothing it across browsers became an increasingly difficult task. As a result, I wrote an entirely new plugin from the ground-up.
+
+Because this plugin was featured in [my CSS Tricks series](https://css-tricks.com/form-validation-part-1-constraint-validation-html/), I'm leaving it up in read only mode for archival purposes.
+
+It will no longer be maintained or updated.
+
 
 <hr>
 
